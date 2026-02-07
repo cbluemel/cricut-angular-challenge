@@ -1,2 +1,22 @@
-<div>WOOF!</div>
-
+<div class="app-container">
+  <mat-card appearance="outlined">
+    <mat-card-title>Welcome to G&uuml;d Boy</mat-card-title>
+    <mat-card-content>
+      <div class="intro">
+        <img src="https://place.dog/160/120" alt="Random dog image" />
+        <div class="blurb">
+          Below you will find links to learn more about all the Gud Boys (and Girls) in the world.
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card appearance="outlined">
+    <mat-card-title>Random Fact</mat-card-title>
+    <mat-card-content>{{ randomFact$ | async }}</mat-card-content>
+  </mat-card>
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <router-outlet></router-outlet>
+    </mat-card-content>
+  </mat-card>
+</div>

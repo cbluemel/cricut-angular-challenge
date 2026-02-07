@@ -1,0 +1,20 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  mat-card {
+    padding: 0.8rem;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+
+    .intro {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+
+      img {
+        border-radius: 10px;
+      }
+    }
+  }
+}

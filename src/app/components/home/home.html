@@ -1,0 +1,9 @@
+@if (this.breedService.getGroups() | async; as groups) {
+  <div>
+    @for (group of groups; track group.id) {
+      <p>
+        <a routerLink="/group/{{ group.id }}">{{ group.attributes.name }}</a>
+      </p>
+    }
+  </div>
+}

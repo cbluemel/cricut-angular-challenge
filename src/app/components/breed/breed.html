@@ -1,0 +1,23 @@
+@if (this.breed$ | async; as breed) {
+  <h2>{{ breed.attributes.name }}</h2>
+  <p>{{ breed.attributes.description }}</p>
+  @if (breed.attributes.hypoallergenic) {
+    <p class="hypoallergenic-container"><mat-icon>verified</mat-icon> Hypoallergenic</p>
+  }
+  <p>
+    Weight:
+    @if (
+      breed.attributes.male_weight.min === breed.attributes.female_weight.min &&
+      breed.attributes.male_weight.max === breed.attributes.female_weight.max
+    ) {
+      {{ breed.attributes.male_weight.min }}kg - {{ breed.attributes.male_weight.max }}kg
+    } @else {
+      Male: {{ breed.attributes.male_weight.min }}kg - {{ breed.attributes.male_weight.max }}kg,
+      Female: {{ breed.attributes.female_weight.min }}kg -
+      {{ breed.attributes.female_weight.max }}kg
+    }
+  </p>
+  <p>Life Span: {{ breed.attributes.life.min }} years - {{ breed.attributes.life.max }} years</p>
+} @else {
+  <p>Loading...</p>
+}

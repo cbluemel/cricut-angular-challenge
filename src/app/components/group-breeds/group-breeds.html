@@ -1,0 +1,17 @@
+@if (this.progress$ | async; as progress) {
+  @if (progress.total !== progress.done) {
+    <div>Loading breeds...</div>
+    <div>
+      <mat-progress-bar mode="determinate" [value]="(progress.done / progress.total) * 100" />
+    </div>
+  }
+}
+@if (breeds$ | async; as breeds) {
+  <div>
+    @for (breed of breeds; track breed.id) {
+      <p>
+        <a routerLink="/breed/{{ breed.id }}">{{ breed.attributes.name }}</a>
+      </p>
+    }
+  </div>
+}
