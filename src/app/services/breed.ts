@@ -109,6 +109,11 @@ export class BreedService {
   }
 
   getBreedsByGroup(groupId: string) {
+    if (!groupId) {
+      console.warn('Group ID is required to fetch breeds.');
+      return of(undefined);
+    }
+
     const groupBreeds$$ = this.getBreedsSubject(groupId);
     if (groupBreeds$$.value) {
       return groupBreeds$$.asObservable();
@@ -177,7 +182,6 @@ export class BreedService {
   getBreedById(breedId: string): Observable<IBreed> {
     const cachedBreed = this.breedsById.get(breedId);
     if (cachedBreed) {
-      console.log('Cached breed:', cachedBreed);
       return of(cachedBreed);
     }
 
@@ -185,7 +189,6 @@ export class BreedService {
       map((r) => r.data),
       tap((breed) => {
         this.breedsById.set(breed.id, breed);
-        console.log('Fetched breed:', breed);
       }),
     );
   }
